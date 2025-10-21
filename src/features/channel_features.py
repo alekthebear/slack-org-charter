@@ -1,11 +1,15 @@
+import argparse
+
 import pandas as pd
 
 import config
 from extract.users import get_users
 from extract.messages import get_all_messages
 from extract.channels import get_channels
+from utils import file_cache
 
 
+@file_cache(f"{config.FEATURES_DATA_ROOT}/channel_features.parquet")
 def get_channel_features() -> pd.DataFrame:
     users_df = get_users()
     messages_df = get_all_messages()
@@ -71,4 +75,12 @@ def get_channel_features() -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    get_channel_features()
+    parser = argparse.ArgumentParser(description="Generate channel features")
+    parser.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="Force regeneration of cached features",
+    )
+    args = parser.parse_args()
+
+    get_channel_features(force_refresh=args.force_refresh)

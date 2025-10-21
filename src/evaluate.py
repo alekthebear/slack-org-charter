@@ -36,6 +36,9 @@ class OrgChartEvaluator:
     def __init__(self, predicted: OrgChart, ground_truth: OrgChart):
         self.predicted = predicted
         self.ground_truth = ground_truth
+        # Create lookup dictionaries for easy access by name
+        self.gt_lookup = {entry.name: entry.model_dump() for entry in ground_truth.entries}
+        self.pred_lookup = {entry.name: entry.model_dump() for entry in predicted.entries}
 
     def fuzzy_match_names(
         self, threshold: int = 80
@@ -70,7 +73,7 @@ class OrgChartEvaluator:
             for match in substring_matches:
                 # Perfect substring match
                 potential_matches.append((gt_name, match, threshold))
-
+            
             # Use fuzzy matching with normalized name
             matches = process.extract(
                 gt_name_normalized,
@@ -84,7 +87,9 @@ class OrgChartEvaluator:
 
         # Sort by score (highest first) to prioritize best matches
         potential_matches.sort(key=lambda x: x[2], reverse=True)
-
+        for match in potential_matches:
+            print(match)
+        
         # Greedy 1-to-1 matching
         name_mapping = {}
         used_pred_names = set()

@@ -1,3 +1,5 @@
+import argparse
+import os
 from pathlib import Path
 from typing import Optional
 import json
@@ -13,7 +15,7 @@ import utils
 def get_all_messages(
     data_root: str = config.RAW_DATA_ROOT,
     cache_root: str = config.EXTRACTED_DATA_ROOT,
-    use_cache: bool = True,
+    force_refresh: bool = False,
 ) -> pd.DataFrame:
     """
     Extract all messages from all channel directories in the data root.
@@ -36,14 +38,14 @@ def get_all_messages(
     ):
         channel_name = channel_dir.name
         cache_path = Path(cache_root) / f"{channel_name}.parquet"
-        if use_cache and cache_path and cache_path.exists():
+        if not force_refresh and cache_path and cache_path.exists():
             channel_messages_df = pd.read_parquet(cache_path)
         else:
             channel_messages_df = get_channel_messages(
                 channel_name,
                 data_root=data_root,
                 cache_root=cache_root,
-                use_cache=use_cache,
+                force_refresh=force_refresh,
             )
         all_messages.append(channel_messages_df)
 
@@ -57,7 +59,7 @@ def get_channel_messages(
     channel_name: str,
     data_root: str = config.RAW_DATA_ROOT,
     cache_root: str = config.EXTRACTED_DATA_ROOT,
-    use_cache: bool = True,
+    force_refresh: bool = False,
 ) -> pd.DataFrame:
     """
     Extract messages from a specific channel.
@@ -72,7 +74,7 @@ def get_channel_messages(
         DataFrame with extracted message data
     """
     cache_path = Path(cache_root) / f"{channel_name}.parquet"
-    if use_cache and cache_path and cache_path.exists():
+    if not force_refresh and cache_path and cache_path.exists():
         print(f"Loaded {channel_name} from cache: {cache_path}")
         return pd.read_parquet(cache_path)
 
@@ -97,8 +99,9 @@ def get_channel_messages(
 
     # Save to cache if filepath specified
     if not messages_df.empty:
+        os.makedirs(cache_root, exist_ok=True)
         messages_df.to_parquet(cache_path, index=False)
-        print(f"Saved {channel_name} messagesto cache: {cache_path}")
+        print(f"Saved {channel_name} messages to cache: {cache_path}")
     return messages_df
 
 
@@ -245,3 +248,16 @@ def _get_message_id(channel_name: str, ts: str) -> str:
     Generate a unique message ID based on channel name and timestamp.
     """
     return f"{channel_name}_{ts}"
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Extract messages from a specific channel"
+    )
+    parser.add_argument("--channel-name", type=str, required=False)
+    parser.add_argument("--force-refresh", action="store_true")
+    args = parser.parse_args()
+    if args.channel_name:
+        get_channel_messages(args.channel_name, force_refresh=args.force_refresh)
+    else:
+        get_all_messages(force_refresh=args.force_refresh)

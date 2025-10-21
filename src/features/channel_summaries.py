@@ -1,18 +1,19 @@
+import argparse
+import json
+
 import litellm
 from tqdm.auto import tqdm
 import pandas as pd
-import os
-import json
 
-from config import FEATURES_DATA_ROOT
+from config import DEFAULT_MODEL, FEATURES_DATA_ROOT
+from extract.channels import get_channels
 from features.channel_conventions import (
     CHANNEL_INPUT_FORMAT,
     get_channel_naming_conventions,
     _stringify_channels_input,
 )
+from utils import file_cache
 
-
-CHANNEL_USEFULNESS_CACHE = f"{FEATURES_DATA_ROOT}/channel_usefulness.json"
 
 CHANNELS_USEFULNESS_LABEL_PROMPT = """
 You are a corporate organization researcher. Your goal is to understand:
@@ -55,15 +56,12 @@ Here are the list of channels to label:
 """
 
 
+@file_cache(f"{FEATURES_DATA_ROOT}/channel_usefulness.json")
 def get_channel_usefulness_labels(
-    channels_df: pd.DataFrame, use_cache: bool = True, batch_size: int = 100
+    channels_df: pd.DataFrame, batch_size: int = 100
 ) -> list[dict]:
     """Get the usefulness labels for a list of channels."""
-    if use_cache and os.path.exists(CHANNEL_USEFULNESS_CACHE):
-        with open(CHANNEL_USEFULNESS_CACHE, "r") as f:
-            return json.load(f)
-
-    channel_naming_conventions = get_channel_naming_conventions(channels_df)
+    channel_naming_conventions = get_channel_naming_conventions()
     all_results = []
 
     with tqdm(total=len(channels_df), desc="Labeling channels") as pbar:
@@ -73,8 +71,6 @@ def get_channel_usefulness_labels(
             all_results.extend(batch_results)
             pbar.update(len(batch_df))
 
-    with open(CHANNEL_USEFULNESS_CACHE, "w") as f:
-        json.dump(all_results, f)
     return all_results
 
 
@@ -89,7 +85,7 @@ def _label_channels_batch(
         channel_naming_conventions=channel_naming_conventions,
     )
     response = litellm.completion(
-        model="openai/gpt-5",
+        model=DEFAULT_MODEL,
         messages=[{"content": prompt, "role": "user"}],
     )
     result = response.choices[0].message.content
@@ -99,3 +95,18 @@ def _label_channels_batch(
         return parsed_result
     except json.JSONDecodeError:
         raise ValueError(f"Error parsing JSON: {result}")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Generate channel usefulness labels features"
+    )
+    parser.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="Force regeneration of cached features",
+    )
+    args = parser.parse_args()
+
+    channels_df = get_channels()
+    get_channel_usefulness_labels(channels_df, force_refresh=args.force_refresh)

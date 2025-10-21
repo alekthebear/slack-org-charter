@@ -1,12 +1,12 @@
+import argparse
+
 import litellm
 import pandas as pd
-import os
 
-from config import FEATURES_DATA_ROOT
+from config import DEFAULT_MODEL, FEATURES_DATA_ROOT
 from extract.channels import get_channels
+from utils import file_cache
 
-
-CHANNEL_CONVENTION_CACHE = f"{FEATURES_DATA_ROOT}/channel_conventions.txt"
 
 CHANNEL_INPUT_FORMAT = """
 You are given an input list of slack channels from the same workspace with the following format, separated by "---":
@@ -35,25 +35,18 @@ Here are the list of channels:
 """
 
 
-def get_channel_naming_conventions(use_cache: bool = True) -> str:
-    if use_cache and os.path.exists(CHANNEL_CONVENTION_CACHE):
-        with open(CHANNEL_CONVENTION_CACHE, "r") as f:
-            return f.read()
-
+@file_cache(f"{FEATURES_DATA_ROOT}/channel_conventions.txt")
+def get_channel_naming_conventions() -> str:
     channels_df = get_channels()
     channel_list_str = _stringify_channels_input(channels_df)
     prompt = CHANNEL_NAMING_CONVENTIONS_PROMPT.format(
         channel_input_prompt=CHANNEL_INPUT_FORMAT, channel_list_str=channel_list_str
     )
     response = litellm.completion(
-        model="openai/gpt-5",
+        model=DEFAULT_MODEL,
         messages=[{"content": prompt, "role": "user"}],
     )
-    result = response.choices[0].message.content
-
-    with open(CHANNEL_CONVENTION_CACHE, "w") as f:
-        f.write(result)
-    return result
+    return response.choices[0].message.content
 
 
 def _format_channel_rows(channel_row):
@@ -71,3 +64,17 @@ def _stringify_channels_input(channels_df: pd.DataFrame):
     return "\n---\n".join(
         sorted(list(channels_df.apply(_format_channel_rows, axis=1).tolist()))
     )
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Generate channel naming conventions features"
+    )
+    parser.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="Force regeneration of cached features",
+    )
+    args = parser.parse_args()
+
+    get_channel_naming_conventions(force_refresh=args.force_refresh)

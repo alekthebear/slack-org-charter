@@ -1,6 +1,5 @@
+import argparse
 from concurrent.futures import ThreadPoolExecutor
-import json
-import os
 
 import litellm
 from pydantic import BaseModel
@@ -8,9 +7,7 @@ from tqdm import tqdm
 
 import config
 from inference.user_role import UserRole, get_user_roles
-
-
-USER_MANAGERS_CACHE = f"{config.FEATURES_DATA_ROOT}/user_managers.json"
+from utils import file_cache
 
 
 USER_MANAGER_PROMPT = """
@@ -63,18 +60,15 @@ def get_user_manager(
         possible_managers=possible_managers_str,
     )
     response = litellm.completion(
-        model="openai/gpt-5",
+        model=config.DEFAULT_MODEL,
         messages=[{"role": "user", "content": prompt}],
         response_format=UserManager,
     )
     return UserManager.model_validate_json(response["choices"][0]["message"]["content"])
 
 
-def get_user_managers(use_cache: bool = True) -> list[UserManager]:
-    if use_cache and os.path.exists(USER_MANAGERS_CACHE):
-        with open(USER_MANAGERS_CACHE, "r") as f:
-            return [UserManager.model_validate(r) for r in json.load(f)]
-
+@file_cache(f"{config.INFERENCE_DATA_ROOT}/user_managers.json")
+def get_user_managers() -> list[UserManager]:
     user_roles = get_user_roles()
     with ThreadPoolExecutor(max_workers=config.MAX_CONCURRENT_WORKERS) as executor:
         user_managers = list(
@@ -84,11 +78,20 @@ def get_user_managers(use_cache: bool = True) -> list[UserManager]:
                     user_roles,
                 ),
                 total=len(user_roles),
-                desc="Extracting user managers",
+                desc="Inferring user managers",
                 unit="user",
             )
         )
-
-    with open(USER_MANAGERS_CACHE, "w") as f:
-        json.dump([r.model_dump() for r in user_managers], f)
     return user_managers
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Generate user managers inference")
+    parser.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="Force regeneration of cached inference results",
+    )
+    args = parser.parse_args()
+
+    get_user_managers(force_refresh=args.force_refresh)
