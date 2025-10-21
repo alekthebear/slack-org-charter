@@ -87,6 +87,7 @@ def _label_channels_batch(
     response = litellm.completion(
         model=DEFAULT_MODEL,
         messages=[{"content": prompt, "role": "user"}],
+        metadata={"trace_name": "channel_summaries"},
     )
     result = response.choices[0].message.content
     try:

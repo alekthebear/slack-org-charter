@@ -1,7 +1,9 @@
 import argparse
 
-from inference.user_manager import UserManager, get_user_managers
-from inference.user_role import UserRole, get_user_roles
+from inference.normalize_user_managers import get_normalized_user_managers
+from inference.normalize_user_roles import get_normalized_user_roles
+from inference.user_role import UserRole
+from inference.user_manager import UserManager
 from orgchart.model import OrgChart, OrgChartEntry
 
 
@@ -60,8 +62,8 @@ def build_org_chart(
 
 
 def generate_org_chart() -> OrgChart:
-    user_roles = get_user_roles()
-    user_managers = get_user_managers()
+    user_roles = get_normalized_user_roles()
+    user_managers = get_normalized_user_managers()
     org_chart = build_org_chart(user_roles, user_managers)
     return org_chart
 

@@ -1,4 +1,4 @@
-# Gather Town Org Chart Generator
+# Org Chart Generator
 
 This project generates organizational charts from Slack workspace data by analyzing user interactions, channel memberships, and other features to infer organizational structure.
 
@@ -91,6 +91,35 @@ CACHE_ROOT = "/path/to/cache/directory"
 # Option 2: Set via environment variable (recommended)
 export CACHE_ROOT="/path/to/cache/directory"
 ```
+
+#### API Keys for LLM Models
+
+**Purpose**: The pipeline uses [LiteLLM](https://github.com/BerriAI/litellm) to interface with language models, which automatically reads the appropriate API key environment variables based on the model provider.
+
+**Required Environment Variables**:
+
+The specific environment variable(s) needed depend on which model provider you're using:
+
+- **OpenAI** models (e.g., `openai/gpt-4`, `openai/gpt-4o`): Requires `OPENAI_API_KEY`
+- **Anthropic** models (e.g., `anthropic/claude-3-5-sonnet-20241022`): Requires `ANTHROPIC_API_KEY`
+- **Google** models (e.g., `gemini/gemini-pro`): Requires `GEMINI_API_KEY`
+- **Other providers**: See [LiteLLM documentation](https://docs.litellm.ai/docs/providers) for required keys
+
+**How to Configure**:
+
+```bash
+# For OpenAI (default configuration)
+export OPENAI_API_KEY="your-openai-api-key-here"
+
+# For other providers, set the appropriate environment variable
+export ANTHROPIC_API_KEY="your-anthropic-api-key-here"
+```
+
+**Models Used**:
+- `DEFAULT_MODEL` (default: `"openai/gpt-5"`): Used for general inference tasks like role identification and manager inference
+- `WEB_SEARCH_MODEL` (default: `"openai/gpt-5-search-api"`): Used for web search capabilities when enriching user context
+
+**Note**: If you change `DEFAULT_MODEL` or `WEB_SEARCH_MODEL` in `src/config.py` to use a different provider, ensure you have the corresponding API key environment variable set.
 
 ### Other Configuration Parameters
 

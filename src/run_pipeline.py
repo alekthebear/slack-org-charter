@@ -1,12 +1,13 @@
 import argparse
 
 from extract.messages import get_all_messages
-from features.web_search import get_web_search_employees_info
 from features.channel_conventions import get_channel_naming_conventions
 from features.channel_features import get_channel_features
 from features.user_features import get_user_features
+from features.web_search import get_web_search_employees_info
+from inference.normalize_user_managers import get_normalized_user_managers
+from inference.normalize_user_roles import get_normalized_user_roles, get_user_roles
 from inference.user_manager import get_user_managers
-from inference.user_role import get_user_roles
 from orgchart.generate import generate_org_chart
 
 
@@ -27,8 +28,10 @@ def run_pipeline(force_refresh: bool = False, org_chart_output: str = None):
     print("=== Inference ===")
     print("*** Inferring User Roles ***")
     get_user_roles(force_refresh=force_refresh)
+    get_normalized_user_roles(force_refresh=force_refresh)
     print("*** Inferring User Managers ***")
     get_user_managers(force_refresh=force_refresh)
+    get_normalized_user_managers(force_refresh=force_refresh)
 
     print("=== Generate Org Chart ===")
     org_chart = generate_org_chart()

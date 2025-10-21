@@ -45,6 +45,7 @@ def get_channel_naming_conventions() -> str:
     response = litellm.completion(
         model=DEFAULT_MODEL,
         messages=[{"content": prompt, "role": "user"}],
+        metadata={"trace_name": "channel_conventions"},
     )
     return response.choices[0].message.content
 

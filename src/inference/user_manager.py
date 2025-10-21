@@ -63,13 +63,14 @@ def get_user_manager(
         model=config.DEFAULT_MODEL,
         messages=[{"role": "user", "content": prompt}],
         response_format=UserManager,
+        metadata={"trace_name": "user_manager"},
     )
     return UserManager.model_validate_json(response["choices"][0]["message"]["content"])
 
 
 @file_cache(f"{config.INFERENCE_DATA_ROOT}/user_managers.json")
 def get_user_managers() -> list[UserManager]:
-    user_roles = get_user_roles()
+    user_roles = [u for u in get_user_roles() if not u.is_external]
     with ThreadPoolExecutor(max_workers=config.MAX_CONCURRENT_WORKERS) as executor:
         user_managers = list(
             tqdm(

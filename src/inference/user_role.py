@@ -28,13 +28,26 @@ You have the following sources of information:
 - Top slack channels that the employee has EVER participated in, with the channel name
   and the number of messages from the employee, enclosed in <all_time_channels_list> tags
 
+Determine the title and the project that the employee is working on. If the employee is actually
+an external partner/advisor/client instead of an actual employee, then note that.
 
-Output example:
+Output example 1:
 {{
     "name": "John Doe",
     "title": "Software Engineer",
     "project": "Project X",
-    "reason": "The employee participates mainly in engineering channels on the project X"
+    "reason": "The employee participates mainly in engineering channels on the project X",
+    "is_external": false
+
+}}
+Output example 2:
+{{
+    "name": "Jane Doe",
+    "title": "CEO of Company Y",
+    "project": "Project Z",
+    "reason": "The person is actually the CEO of Company Y and is working on Project Z",
+    "is_external": true
+
 }}
 
 ---
@@ -69,6 +82,7 @@ class UserRole(BaseModel):
     title: str
     project: str
     reason: str
+    is_external: bool
 
 
 def get_user_role(user_info_dict: dict, top_n_channels: int = 20) -> UserRole:
@@ -103,6 +117,7 @@ def get_user_role(user_info_dict: dict, top_n_channels: int = 20) -> UserRole:
         model=config.DEFAULT_MODEL,
         messages=[{"role": "user", "content": prompt}],
         response_format=UserRole,
+        metadata={"trace_name": "user_role"},
     )
     return UserRole.model_validate_json(response["choices"][0]["message"]["content"])
 

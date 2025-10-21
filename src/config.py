@@ -8,7 +8,7 @@ import pandas as pd
 #  File and Data Paths
 # ====================
 RAW_DATA_ROOT = os.environ.get("RAW_DATA_ROOT", f"{Path.home()}/Desktop/OrgChartTakehomeOctober/data/raw")
-CACHE_ROOT = os.environ.get("CACHE_ROOT", f"{Path.home()}/Desktop/OrgChartTakehomeOctober/cache")
+CACHE_ROOT = os.environ.get("CACHE_ROOT", f"{Path.home()}/Desktop/OrgChartTakehomeOctober/data/cache")
 
 # (Derived from root directories specified above)
 EXTRACTED_DATA_ROOT = f"{CACHE_ROOT}/extracted"

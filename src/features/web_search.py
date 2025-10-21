@@ -33,6 +33,7 @@ def get_web_search_employees_info(company_name: str = config.COMPANY_NAME) -> We
         model=config.WEB_SEARCH_MODEL,
         messages=[{"role": "user", "content": prompt}],
         response_format=WebSearchResults,
+        metadata={"trace_name": "web_search_employees_info"},
     )
     return WebSearchResults.model_validate_json(
         response["choices"][0]["message"]["content"]
