@@ -1,17 +1,18 @@
-import json
 from pathlib import Path
 from typing import Optional
+import json
+import re
 
-import pandas as pd
 from tqdm.auto import tqdm
+import pandas as pd
 
-import consts
-from utils import get_first_value
+import config
+import utils
 
 
-def extract_all_messages(
-    data_root: str = consts.RAW_DATA_ROOT,
-    cache_dir: Optional[str] = None,
+def get_all_messages(
+    data_root: str = config.RAW_DATA_ROOT,
+    cache_root: str = config.EXTRACTED_DATA_ROOT,
     use_cache: bool = True,
 ) -> pd.DataFrame:
     """
@@ -27,17 +28,23 @@ def extract_all_messages(
     - extracted signals (mentions, thread info, reactions)
     - channel context
     """
-    cache_dir = cache_dir or consts.PROCESSED_DATA_ROOT
     all_messages = []
 
     # Iterate through all channel directories
-    for channel_dir in tqdm(list(Path(data_root).glob("*/")), desc="Channels"):
+    for channel_dir in tqdm(
+        list(Path(data_root).glob("*/")), desc="Load Channel Messages"
+    ):
         channel_name = channel_dir.name
-        channel_messages_df = extract_channel_messages(
-            channel_name,
-            data_root=data_root,
-            cache_dir= cache_dir if use_cache else None,
-        )
+        cache_path = Path(cache_root) / f"{channel_name}.parquet"
+        if use_cache and cache_path and cache_path.exists():
+            channel_messages_df = pd.read_parquet(cache_path)
+        else:
+            channel_messages_df = get_channel_messages(
+                channel_name,
+                data_root=data_root,
+                cache_root=cache_root,
+                use_cache=use_cache,
+            )
         all_messages.append(channel_messages_df)
 
     if all_messages:
@@ -46,10 +53,11 @@ def extract_all_messages(
         return pd.DataFrame()
 
 
-def extract_channel_messages(
+def get_channel_messages(
     channel_name: str,
-    data_root: str = consts.RAW_DATA_ROOT,
-    cache_dir: Optional[str] = consts.PROCESSED_DATA_ROOT,
+    data_root: str = config.RAW_DATA_ROOT,
+    cache_root: str = config.EXTRACTED_DATA_ROOT,
+    use_cache: bool = True,
 ) -> pd.DataFrame:
     """
     Extract messages from a specific channel.
@@ -63,12 +71,16 @@ def extract_channel_messages(
     Returns:
         DataFrame with extracted message data
     """
-    messages = []
-    channel_path = Path(data_root) / channel_name
-    if not channel_path.exists():
-        raise ValueError(f"Channel directory not found: {channel_path}")
+    cache_path = Path(cache_root) / f"{channel_name}.parquet"
+    if use_cache and cache_path and cache_path.exists():
+        print(f"Loaded {channel_name} from cache: {cache_path}")
+        return pd.read_parquet(cache_path)
 
-    for json_file in sorted(channel_path.glob("*.json")):
+    messages = []
+    input_path = Path(data_root) / channel_name
+    if not input_path.exists():
+        raise ValueError(f"Channel directory not found: {input_path}")
+    for json_file in sorted(input_path.glob("*.json")):
         try:
             with open(json_file) as f:
                 daily_messages = json.load(f)
@@ -81,26 +93,28 @@ def extract_channel_messages(
             print(f"Error processing {json_file}: {e}")
             continue
 
-    df = pd.DataFrame.from_records(messages)
+    messages_df = pd.DataFrame.from_records(messages)
 
     # Save to cache if filepath specified
-    cache_file_path = Path(cache_dir) / f"{channel_name}.parquet" if cache_dir else None
-    if cache_file_path and not df.empty:
-        df.to_parquet(cache_file_path, index=False)
-        print(f"Saved {channel_name} to cache: {cache_file_path}")
-    return df
+    if not messages_df.empty:
+        messages_df.to_parquet(cache_path, index=False)
+        print(f"Saved {channel_name} messagesto cache: {cache_path}")
+    return messages_df
 
 
 def extract_message(msg: dict, channel_name: str) -> Optional[dict]:
     """
     Extract relevant fields from a single message.
     """
+    user_id_to_name_map = utils.get_user_id_to_name_map()
+
     # filter out non-message events
     if "type" not in msg or msg["type"] != "message":
         return None
 
     # User info
     user_id = msg.get("user")
+    user_name = user_id_to_name_map.get(user_id, "")
 
     # Extract timestamp
     ts = msg["ts"]
@@ -108,6 +122,9 @@ def extract_message(msg: dict, channel_name: str) -> Optional[dict]:
 
     # Extract text content
     text = msg.get("text", "")
+
+    # Create text with mentions replaced by names
+    text_formatted = _format_names(text, user_id_to_name_map)
 
     # Extract mentions from text and blocks
     mentions = _extract_mentions(msg)
@@ -132,10 +149,12 @@ def extract_message(msg: dict, channel_name: str) -> Optional[dict]:
         "id": _get_message_id(channel_name, ts),
         # User info
         "user_id": user_id,
+        "user_name": user_name,
         # Message metadata
         "timestamp": timestamp,
         "channel": channel_name,
         "text": text,
+        "text_formatted": text_formatted,  # Text with mentions replaced by names
         "message_type": msg.get("subtype", "normal"),
         # Interaction signals
         "mentions": mentions,  # List of user_ids mentioned
@@ -168,7 +187,6 @@ def _extract_mentions(msg: dict) -> list[str]:
 
     # Extract from text field (format: <@USER_ID>)
     text = msg.get("text", "")
-    import re
 
     text_mentions = re.findall(r"<@([A-Z0-9]+)>", text)
     mentions.update(text_mentions)
@@ -198,6 +216,29 @@ def _extract_reactions(msg: dict) -> list[dict]:
     return [
         {"name": r["name"], "users": r["users"], "count": r["count"]} for r in reactions
     ]
+
+
+def _format_names(text: str, user_id_to_name_map: dict) -> str:
+    """
+    Replace user ID mentions in text with user names. e.g. <@U018H1KULD8> -> <@First Last>
+
+    Args:
+        text: Message text containing mentions in format <@USER_ID>
+        user_id_to_name_map: Dict mapping user IDs to names
+
+    Returns:
+        Text with mentions replaced with names
+    """
+
+    def replace_mention(match):
+        user_id = match.group(1)
+        user_name = user_id_to_name_map.get(
+            user_id, user_id
+        )  # Fallback to user_id if not found
+        return f"<@{user_name}>"
+
+    return re.sub(r"<@([A-Z0-9]+)>", replace_mention, text)
+
 
 def _get_message_id(channel_name: str, ts: str) -> str:
     """

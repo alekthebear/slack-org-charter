@@ -5,12 +5,21 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "litellm>=1.78.5",
     "pandas>=2.3.3",
     "pyarrow>=21.0.0",
     "tqdm>=4.67.1",
+    "rapidfuzz>=3.11.0",
 ]
 
 [dependency-groups]
 dev = [
+    "anytree>=2.12.1",
     "jupyter>=1.1.1",
+    "matplotlib>=3.10.7",
+    "plotly>=6.3.1",
+    "langfuse>=3.7.0",
+    "opentelemetry-exporter-otlp-proto-grpc>=1.38.0",
+    "pytest>=8.4.2",
+    "ruff>=0.14.1",
 ]

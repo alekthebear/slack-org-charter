@@ -2,13 +2,10 @@ import json
 
 import pandas as pd
 
-import consts
+import config
 
 
-CHANNELS_FILE_PATH = consts.RAW_DATA_ROOT + "/" + "channels.json"
-
-
-def extract_channels(channel_file_path: str = CHANNELS_FILE_PATH) -> pd.DataFrame:
+def get_channels(channel_file_path: str = config.CHANNELS_FILE_PATH) -> pd.DataFrame:
     with open(channel_file_path) as f:
         channels = json.load(f)
     return pd.DataFrame.from_records([extract_channel(c) for c in channels])

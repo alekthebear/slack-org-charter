@@ -2,13 +2,10 @@ import json
 
 import pandas as pd
 
-import consts
+import config
 
 
-USER_FILE_PATH = consts.RAW_DATA_ROOT + "/" + "users.json"
-
-
-def extract_users(user_file_path: str = USER_FILE_PATH) -> pd.DataFrame:
+def get_users(user_file_path: str = config.USERS_FILE_PATH) -> pd.DataFrame:
     with open(user_file_path) as f:
         users = json.load(f)
     return pd.DataFrame.from_records([extract_user(u) for u in users])
