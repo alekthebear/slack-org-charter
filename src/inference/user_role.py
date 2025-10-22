@@ -5,7 +5,7 @@ import litellm
 from tqdm import tqdm
 from pydantic import BaseModel
 
-from features.channel_summaries import get_channel_naming_conventions
+from features.channel_conventions import get_channel_naming_conventions
 from features.user_features import get_user_features
 from features.web_search import get_web_search_employees_info
 from utils import file_cache
