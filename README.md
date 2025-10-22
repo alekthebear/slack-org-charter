@@ -157,7 +157,6 @@ python src/run_pipeline.py -o output/org_chart.md --force-refresh
 - Re-extract all messages from raw data
 - Re-run all feature extraction (including LLM calls)
 - Re-run all inference steps
-- This can be slow and expensive if using paid LLM APIs
 
 ### Command-Line Options
 
