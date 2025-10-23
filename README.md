@@ -170,8 +170,18 @@ To evaluate the quality of your generated org chart against a ground truth file:
 ### Usage
 
 ```bash
+# Default: Pretty-printed results to terminal
 python src/evaluate.py --pred output/org_chart.md --true path/to/ground_truth.md
+
+# JSON output (useful for programmatic processing)
+python src/evaluate.py --pred output/org_chart.md --true path/to/ground_truth.md --json
 ```
+
+### Command-Line Options
+
+- `--pred` (required): Path to the predicted/generated org chart markdown file
+- `--true` (required): Path to the ground truth org chart markdown file
+- `--json`: Print results as JSON instead of pretty-printed format (optional)
 
 ### What It Evaluates
 

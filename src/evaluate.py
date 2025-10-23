@@ -10,18 +10,18 @@ Usage:
     python evaluate_org_chart.py --pred <generated_file> --true <ground_truth_file>
 """
 
-from dataclasses import dataclass
+import json
 from typing import Dict, List, Tuple
 import argparse
 import re
 
+from pydantic import BaseModel
 from rapidfuzz import fuzz, process
 
 from orgchart.model import OrgChart
 
 
-@dataclass
-class EvaluationResults:
+class EvaluationResults(BaseModel):
     name_mapping: Dict[str, str]  # ground_truth_name -> predicted_name
     unmatched_gt: List[str]
     unmatched_pred: List[str]
@@ -37,8 +37,12 @@ class OrgChartEvaluator:
         self.predicted = predicted
         self.ground_truth = ground_truth
         # Create lookup dictionaries for easy access by name
-        self.gt_lookup = {entry.name: entry.model_dump() for entry in ground_truth.entries}
-        self.pred_lookup = {entry.name: entry.model_dump() for entry in predicted.entries}
+        self.gt_lookup = {
+            entry.name: entry.model_dump() for entry in ground_truth.entries
+        }
+        self.pred_lookup = {
+            entry.name: entry.model_dump() for entry in predicted.entries
+        }
 
     def fuzzy_match_names(
         self, threshold: int = 80
@@ -73,7 +77,7 @@ class OrgChartEvaluator:
             for match in substring_matches:
                 # Perfect substring match
                 potential_matches.append((gt_name, match, threshold))
-            
+
             # Use fuzzy matching with normalized name
             matches = process.extract(
                 gt_name_normalized,
@@ -87,9 +91,7 @@ class OrgChartEvaluator:
 
         # Sort by score (highest first) to prioritize best matches
         potential_matches.sort(key=lambda x: x[2], reverse=True)
-        for match in potential_matches:
-            print(match)
-        
+
         # Greedy 1-to-1 matching
         name_mapping = {}
         used_pred_names = set()
@@ -328,6 +330,12 @@ def main():
     parser.add_argument(
         "--true", required=True, help="Path to the ground truth org chart markdown file"
     )
+    parser.add_argument(
+        "--json",
+        default=False,
+        action="store_true",
+        help="Print the results as a JSON string",
+    )
 
     args = parser.parse_args()
 
@@ -340,7 +348,10 @@ def main():
     results = evaluator.evaluate()
 
     # Print results
-    print_results(results)
+    if args.json:
+        print(json.dumps(results.model_dump(), indent=2))
+    else:
+        print_results(results)
 
 
 if __name__ == "__main__":
