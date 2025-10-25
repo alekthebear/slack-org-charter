@@ -11,9 +11,10 @@ class TestGenerateOrgChart:
                 title="Chief Executive Officer",
                 project="Leadership",
                 reason="",
+                is_external=False,
             ),
             UserRole(
-                name="Engineer", title="Software Engineer", project="Product", reason=""
+                name="Engineer", title="Software Engineer", project="Product", reason="", is_external=False
             ),
         ]
         user_managers = [
@@ -42,10 +43,10 @@ class TestGenerateOrgChart:
     def test_teammates_calculation(self):
         """Test that teammates are correctly identified."""
         user_roles = [
-            UserRole(name="Manager", title="Manager", project="Team", reason=""),
-            UserRole(name="Engineer1", title="Engineer", project="Product", reason=""),
-            UserRole(name="Engineer2", title="Engineer", project="Product", reason=""),
-            UserRole(name="Engineer3", title="Engineer", project="Product", reason=""),
+            UserRole(name="Manager", title="Manager", project="Team", reason="", is_external=False),
+            UserRole(name="Engineer1", title="Engineer", project="Product", reason="", is_external=False),
+            UserRole(name="Engineer2", title="Engineer", project="Product", reason="", is_external=False),
+            UserRole(name="Engineer3", title="Engineer", project="Product", reason="", is_external=False),
         ]
         user_managers = [
             UserManager(name="Manager", manager=None, reason=""),
@@ -69,13 +70,13 @@ class TestGenerateOrgChart:
     def test_multi_level_hierarchy(self):
         """Test a multi-level organizational hierarchy."""
         user_roles = [
-            UserRole(name="CEO", title="CEO", project="Leadership", reason=""),
+            UserRole(name="CEO", title="CEO", project="Leadership", reason="", is_external=False),
             UserRole(
-                name="VP", title="Vice President", project="Engineering", reason=""
+                name="VP", title="Vice President", project="Engineering", reason="", is_external=False
             ),
-            UserRole(name="Manager", title="Manager", project="Product", reason=""),
-            UserRole(name="IC", title="Engineer", project="Product", reason=""),
-            UserRole(name="IC2", title="Engineer", project="Product", reason=""),
+            UserRole(name="Manager", title="Manager", project="Product", reason="", is_external=False),
+            UserRole(name="IC", title="Engineer", project="Product", reason="", is_external=False),
+            UserRole(name="IC2", title="Engineer", project="Product", reason="", is_external=False),
         ]
         user_managers = [
             UserManager(name="CEO", manager=None, reason=""),
