@@ -3,6 +3,8 @@ import argparse
 from extract.messages import get_all_messages
 from features.channel_conventions import get_channel_naming_conventions
 from features.channel_features import get_channel_features
+from features.explicit_managers import get_explicit_managers
+from features.manager_messages import get_manager_messages
 from features.mention_graph import get_user_mention_graph
 from features.user_features import get_user_features
 from features.web_search import get_web_search_employees_info
@@ -23,6 +25,9 @@ def run_pipeline(force_refresh: bool = False, org_chart_output: str = None):
     get_user_features(force_refresh=force_refresh)
     print("*** Aggregating Mention Graph ***")
     get_user_mention_graph(force_refresh=force_refresh)
+    print("*** Extracting Explicit Manager Signals ***")
+    get_manager_messages(force_refresh=force_refresh)
+    get_explicit_managers(force_refresh=force_refresh)
     print("*** Querying Channel Naming Conventions ***")
     get_channel_naming_conventions(force_refresh=force_refresh)
     print("*** Querying Web Search Employees Info ***")

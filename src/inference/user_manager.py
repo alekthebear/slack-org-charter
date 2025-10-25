@@ -1,40 +1,43 @@
-import argparse
 from concurrent.futures import ThreadPoolExecutor
+import argparse
 
-import litellm
 from pydantic import BaseModel
 from tqdm import tqdm
+import litellm
 
-import config
+from features.explicit_managers import get_explicit_managers
 from features.mention_graph import get_user_mention_graph
-from features.user_features import get_user_features
 from inference.user_role import UserRole, get_user_roles
 from utils import file_cache
+import config
 
 
 USER_MANAGER_PROMPT = """
 You are a corporate organization researcher.
 
 You are given:
-- Information on an employee 
+- Information on an employee
 - A list of other employees in the organization
 - Mention relationships showing how often the employee mentions other employees and vice versa
   (derived from recent Slack messages)
+- Explicit manager signals: these are derived from chat messages where the employees explicitly state who their manager is.
 
 Your goal is to determine the most likely manager for the employee.
 
 A few notes:
+- If an explicit manager signal is provided for this employee, consider it as the most reliable indicator.
+- The explicit manager signal also indicates the likelihood of someone being a manager as opposed to an individual contributor.
 - If the employee likely has no manager (e.g. CEO), then output null for the manager.
 - If there are multiple possible managers, then output the manager with the highest confidence.
 - The employee's title is the strongest indicator of organizational hierarchy. Generally engineers report to
-  engineering managers, product managers report to senior product managers, etc. It’s uncommon for employees 
+  engineering managers, product managers report to senior product managers, etc. It's uncommon for employees
   from different disciplines to report directly to one another.
 - The employee's project and activities are also helpful in determining the employee's relationships
 - Mention patterns can be useful: employees often mention their managers more frequently
   than their managers mention them, though this isn't always the case.
 
 The response should be in a json format, example:
-{{"name": "Jane Doe", "manager": "John Smith", "reason": "The employee works on the team where John Smith is the manager."}}
+{{"name": "Jane Doe", "manager": "John Smith", "reason": "Explicit manager signal from access request form"}}
 
 <employee>
 {employee}
@@ -43,6 +46,10 @@ The response should be in a json format, example:
 <possible_managers>
 {possible_managers}
 </possible_managers>
+
+<explicit_manager_signal>
+{explicit_manager_signal}
+</explicit_manager_signal>
 
 <mention_relationships>
 {mention_relationships}
@@ -80,7 +87,7 @@ def get_mention_stats(
             employee_mentions[mention["mentions"]] = mention["count"]
         elif mention["mentions"] == employee_name:
             mentions_employee[mention["user_name"]] = mention["count"]
-    
+
     coworker_names = set(employee_mentions.keys()) | set(mentions_employee.keys())
     for coworker in coworker_names:
         lines.append(
@@ -100,19 +107,23 @@ def _get_employee_str(employee: UserRole) -> str:
         ]
     )
 
+
 def get_user_manager(
     employee: UserRole,
     possible_managers: list[UserRole],
     mention_graph: list[dict],
+    explicit_manager_str: str,
 ) -> UserManager:
     employee_str = _get_employee_str(employee)
     possible_managers_str = "\n---\n".join(
         [_get_employee_str(m) for m in possible_managers if m.name != employee.name]
     )
     mention_relationships_str = get_mention_stats(employee.name, mention_graph)
+
     prompt = USER_MANAGER_PROMPT.format(
         employee=employee_str,
         possible_managers=possible_managers_str,
+        explicit_manager_signal=explicit_manager_str,
         mention_relationships=mention_relationships_str,
     )
     response = litellm.completion(
@@ -128,16 +139,19 @@ def get_user_manager(
 def get_user_managers() -> list[UserManager]:
     user_roles = [u for u in get_user_roles() if not u.is_external]
 
-    # Load mention graph and name-to-ID mapping once
+    # Load mention graph, manager signals, and name-to-ID mapping once
     mention_graph = get_user_mention_graph()
-    user_features_df = get_user_features()
+    explicit_manager_str = get_explicit_managers()
 
     with ThreadPoolExecutor(max_workers=config.MAX_CONCURRENT_WORKERS) as executor:
         user_managers = list(
             tqdm(
                 executor.map(
                     lambda user_role: get_user_manager(
-                        user_role, user_roles, mention_graph
+                        user_role,
+                        user_roles,
+                        mention_graph,
+                        explicit_manager_str,
                     ),
                     user_roles,
                 ),

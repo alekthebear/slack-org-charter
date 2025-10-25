@@ -44,6 +44,10 @@ def get_user_id_to_name_map(user_file_path: str = config.USERS_FILE_PATH) -> dic
     return {u["id"]: u["profile"]["real_name_normalized"] for u in users}
 
 
+def get_timestamp_from_id(id: str) -> pd.Timestamp:
+    return pd.to_datetime(float(id.split("_")[-1]), unit="s")
+
+
 # =======================
 #  File Caching Decorator
 # =======================
