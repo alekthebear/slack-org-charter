@@ -1,4 +1,4 @@
-# 20251026 Project Update
+# Development Notes
 * Latest results file: [Link](20251025_predicted.md)
 * Error Analysis Output: [Link](errors.json) 
 * Model reasoning traces
