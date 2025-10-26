@@ -1,0 +1,120 @@
+{
+  "name_mapping": {
+    "Rick": "Rick",
+    "Austin (PT contractor)": "Austin",
+    "Ben Greenier": "Ben Greenier",
+    "Ryan Kauk": "Ryan Kauk",
+    "David Rios (Prod Eng)": "David Rios",
+    "Clint": "Clint",
+    "Dave Orr": "David Orr",
+    "Phillip": "Phillip Wang",
+    "Johnny": "Johnny Dallas",
+    "Vic": "Victor Zhou",
+    "Chandler": "Chandler Roth",
+    "Andy": "Andy Lui",
+    "Jordan": "Jordan Maduro",
+    "Bryan": "Bryan Phelps",
+    "Kumail": "Kumail Jaffer",
+    "Aaron": "Aaron Cohen",
+    "Steven": "Steven Yau",
+    "Quan": "Quan Li",
+    "Gianluca": "Gianluca Esposito",
+    "Achilleas": "Achilleas Triantafyllou",
+    "Jared": "Jared Allard",
+    "Panagiotis (contractor)": "Panagiotis Atmatzidis",
+    "Evangeline": "Evangeline Cheng",
+    "Karen": "Karen Duran",
+    "Emily": "Emily Hu",
+    "Josh": "Josh Conley",
+    "Brent": "Brent Traut",
+    "Alex B (contractor)": "Alex Budure",
+    "Jinen": "Jinen Kamdar",
+    "Aleks": "Aleks Bahdanovich",
+    "Daniel": "Daniel Kim",
+    "Brad": "Brad Cerasani",
+    "Daud": "Daud Alzayer",
+    "Som": "Som Chakrabarti",
+    "Evan": "Evan Bakst",
+    "Teresa": "Teresa Araujo",
+    "Sam": "Sam Smith",
+    "Ashley": "Ashley Kalley",
+    "Aki": "Aki Tran",
+    "Katrina": "Katrina Lopez",
+    "Christine": "Christine Valenzuela"
+  },
+  "unmatched_gt": [],
+  "unmatched_pred": [
+    "Autumn Moody",
+    "Carina",
+    "Giorgi",
+    "Karen Ying",
+    "Morgan Smith",
+    "Zachary Montoya"
+  ],
+  "coverage_pct": 100.0,
+  "manager_accuracy": 75.60975609756098,
+  "manager_correct": 31,
+  "manager_total": 41,
+  "manager_errors": [
+    {
+      "employee": "Austin (PT contractor)",
+      "expected_manager": "Aaron",
+      "got_manager": "Evangeline Cheng",
+      "type": "wrong_manager"
+    },
+    {
+      "employee": "Dave Orr",
+      "expected_manager": "Vic",
+      "got_manager": "Aaron Cohen",
+      "type": "wrong_manager"
+    },
+    {
+      "employee": "Vic",
+      "expected_manager": "Phillip",
+      "got_manager": "Kumail Jaffer",
+      "type": "wrong_manager"
+    },
+    {
+      "employee": "Chandler",
+      "expected_manager": "Vic",
+      "got_manager": "Johnny Dallas",
+      "type": "wrong_manager"
+    },
+    {
+      "employee": "Andy",
+      "expected_manager": "Vic",
+      "got_manager": "Evangeline Cheng",
+      "type": "wrong_manager"
+    },
+    {
+      "employee": "Steven",
+      "expected_manager": "Aaron",
+      "got_manager": "Evangeline Cheng",
+      "type": "wrong_manager"
+    },
+    {
+      "employee": "Gianluca",
+      "expected_manager": "Aaron",
+      "got_manager": "Kumail Jaffer",
+      "type": "wrong_manager"
+    },
+    {
+      "employee": "Evangeline",
+      "expected_manager": "Phillip",
+      "got_manager": "Kumail Jaffer",
+      "type": "wrong_manager"
+    },
+    {
+      "employee": "Karen",
+      "expected_manager": "Evangeline",
+      "got_manager": "Ashley Kalley",
+      "type": "wrong_manager"
+    },
+    {
+      "employee": "Ashley",
+      "expected_manager": "Jinen",
+      "got_manager": "Clint",
+      "type": "wrong_manager"
+    }
+  ]
+}

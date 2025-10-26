@@ -1,0 +1,331 @@
+[
+  {
+    "name": "Victor Zhou",
+    "title": "Software Engineer, Platform",
+    "project": "Grapevine (AI)",
+    "reason": "Recent top channels are ai-grapevine-internal, ai-grapevine-alerts, ai-grapevine, grapevine-hn-launch-2025, customer-notes-grapevine, and proj-grapevine-integration, which follow the company\u2019s ai-grapevine/* project pattern. Historical activity in team-platform(-internal) and engineering/performance channels supports the Platform engineer role.",
+    "is_external": false
+  },
+  {
+    "name": "Daniel Kim",
+    "title": "Product Designer",
+    "project": "Grapevine (AI)",
+    "reason": "Slack title says Product Design. Heavy activity in proj-ai-protos, ai-grapevine-internal, and proj-grapevine-integration indicates current focus on AI initiatives, with supporting involvement in proj-exponent and pod-payments. Long-term presence in design-centric channels (low-fidelity, design-requests) and product bug channels (bug-reports-internal-2-0) reinforces a core product design role. Joined in 2020 and participates in internal proj-/pod-/team- channels, so not an external.",
+    "is_external": false
+  },
+  {
+    "name": "Panagiotis Atmatzidis",
+    "title": "Site Reliability Engineer",
+    "project": "Infrastructure & Reliability",
+    "reason": "Slack title indicates SRE in eng-infra. Recent activity is dominated by incident and infra monitoring channels (inc-*, mon-infra-*-critical, team-infra), with only light participation in a product project channel, indicating primary focus on production reliability and incident response.",
+    "is_external": false
+  },
+  {
+    "name": "Ashley Kalley",
+    "title": "Customer Support Specialist",
+    "project": "Payments (Billing & Subscriptions)",
+    "reason": "Slack profile lists Customer Experience (Support). Recent activity is concentrated in pod-payments and related renewal/billing incidents, plus sales-and-success and bug-report channels, indicating CX support focused on payments/billing.",
+    "is_external": false
+  },
+  {
+    "name": "Clint",
+    "title": "Customer Success Manager",
+    "project": "Grapevine (AI)",
+    "reason": "Heavy activity in customer-facing and revenue channels (customer-notes-1-0/2-0, sales-and-success, team-cx-support, alerts-new-subscriptions, alerts-contact-sales-submissions, pod-payments) plus current focus on ai-grapevine, ai-grapevine-internal, customer-notes-grapevine, proj-grapevine-integration, and an external onboarding channel (gradientmsp-grapevine-onboarding) indicates a CX/Success role driving Grapevine onboarding and customer programs.",
+    "is_external": false
+  },
+  {
+    "name": "Emily Hu",
+    "title": "Software Engineer, Core App",
+    "project": "Core App v2",
+    "reason": "Recent activity centers on engineering channels for the core product (bug-reports-*-2-0, alerts-core-app-v2, team-core-app-2-0, multiple incident channels). Historical volume in pod-presence, pod-meetings, and proj-meeting-experience suggests prior focus on meeting/presence within the core app. These patterns align with an engineering role on Core App v2.",
+    "is_external": false
+  },
+  {
+    "name": "David Orr",
+    "title": "Software Engineer, Video/AV",
+    "project": "Video/AV \u2014 Meeting Recording",
+    "reason": "Slack profile lists AV engineer. Heavy recent activity in ai-grapevine-internal/alerts/feedback and new-grapevine-tenant plus proj-meeting-recording, bug-reports-video-2-0, incidents, and team-av indicate he\u2019s working on the AI Grapevine meeting recording/transcription pipeline within AV.",
+    "is_external": false
+  },
+  {
+    "name": "Achilleas Triantafyllou",
+    "title": "Infrastructure Engineer",
+    "project": "Infrastructure & Reliability \u2014 Core App v2",
+    "reason": "Recent activity is dominated by team-infra, mon-infra-*-critical, alerts-core-app-v2, and multiple high-severity incident channels (inc-658/654/659/660/663), indicating on-call and reliability work for v2. All-time history in proj-traffic-acceleration and proj-better-networking supports a focus on networking/performance within core infra.",
+    "is_external": false
+  },
+  {
+    "name": "Katrina Lopez",
+    "title": "Senior People Operations Manager",
+    "project": "Human Resources \u2014 Onboarding & Access",
+    "reason": "Public info lists her as Senior People Operations Manager. Her highest activity is in access-requests (350 all\u2011time; 22 recent) and team-security, consistent with People Ops handling onboarding, permissions, and security coordination.",
+    "is_external": false
+  },
+  {
+    "name": "Morgan Smith",
+    "title": "Customer Education & Communications",
+    "project": "Marketing Website & Launches",
+    "reason": "Slack title matches customer-facing comms/education. Recent activity clusters around trueform-gather and gather-website-crew (website work), proj-grapevine-integration and grapevine-hn-launch-2025 (Grapevine launch), plus sales-and-success, team-cx-support, alerts-contact-sales-submissions and pod-payments/renewal incident\u2014consistent with leading customer communications and education for launches and billing.",
+    "is_external": false
+  },
+  {
+    "name": "Sam Smith",
+    "title": "Data Scientist",
+    "project": "Payments (Billing & Subscriptions)",
+    "reason": "Slack title is \u201cData.\u201d Recent activity is dominated by pod-payments and alerts-new-subscriptions, plus incidents around renewals; historically active in metrics-focused channels and projects (metrics, eng-product-metrics, proj-paid-space-insights, proj-perf-analysis). This indicates a data role focused on payments/subscriptions analytics and improvements.",
+    "is_external": false
+  },
+  {
+    "name": "Autumn Moody",
+    "title": "Marketing Manager, Growth",
+    "project": "Marketing Website & Growth",
+    "reason": "Recent and historical activity centers on gather-website-crew, marketing, sales-and-success, alerts-contact-sales-submissions, and pod-payments, indicating ownership of the marketing site and conversion/billing flows. Participation in security and incident channels appears supportive rather than primary. Joined via Slack in 2022, so not an external partner.",
+    "is_external": false
+  },
+  {
+    "name": "Carina",
+    "title": "Customer Support Specialist",
+    "project": "Core App v2 & Video/AV Support",
+    "reason": "Recent and all\u2011time activity is concentrated in CX and customer feedback/triage channels (team-cx-support, cx-admin-requests, customer-notes-2-0, bug-reports-customer-2-0, sales-and-success) with heavy cross\u2011collaboration in engineering domains (team-core-app, team-av, av-complaints, proj-connection-issues, proj-meeting-recording, gather-gathervideo-user-feedback). Participation in multiple incident channels suggests frontline support/triage rather than engineering ownership. This indicates a CX Support role focused on Gather 2.0\u2019s AV/meeting and core app issues.",
+    "is_external": false
+  },
+  {
+    "name": "Bryan Phelps",
+    "title": "Software Engineer, Platform",
+    "project": "Grapevine (AI)",
+    "reason": "Slack profile lists Engineer on Platform team. Recent activity is dominated by ai-grapevine-* and proj-grapevine-integration channels (e.g., ai-grapevine-internal: 580 msgs; proj-grapevine-integration: 143), which per naming conventions indicate the Grapevine AI project. Participation in team-platform(-internal), incidents, and alerts aligns with a Platform engineering role; historical activity (proj-desktop-v2, performance-v2) supports prior Platform/Desktop work.",
+    "is_external": false
+  },
+  {
+    "name": "Som Chakrabarti",
+    "title": "Product Designer",
+    "project": "Grapevine (AI)",
+    "reason": "Slack title is Product Designer. Recent channels are dominated by ai-grapevine-internal/ai-grapevine, proj-ai-protos, customer-notes-grapevine, and proj-grapevine-integration and -landing-page-and-design, plus design channel low-fidelity\u2014indicating active design work on the Grapevine AI initiative.",
+    "is_external": false
+  },
+  {
+    "name": "Evan Bakst",
+    "title": "Revenue Operations Manager",
+    "project": "Revenue Operations (Payments & SSO)",
+    "reason": "High activity in sales-and-success and lead/subscription alert feeds (alerts-contact-sales-submissions, alerts-space-create-leads, alerts-new-subscriptions), customer-notes channels, and Clay integrations points to GTM/RevOps. Participation in pod-payments and proj-sso indicates focus on monetization and enterprise auth processes bridging Sales/CX with Product/Eng.",
+    "is_external": false
+  },
+  {
+    "name": "Zachary Montoya",
+    "title": "Product Designer",
+    "project": "Maps & Content",
+    "reason": "Channel activity centers on design and art/content work: proj-art-maps-consultations, art-maps, proj-new-maps-and-characters, plus product/design squads like team-2-0-prototype and proj-gather-studio-and-build-tool; also served as a hackweek design coach. This indicates a Product Designer focused on maps/characters and related build tooling.",
+    "is_external": false
+  },
+  {
+    "name": "Johnny Dallas",
+    "title": "Software Engineer, AI",
+    "project": "Grapevine (AI)",
+    "reason": "Heavy recent and all\u2011time activity in ai-grapevine-internal, ai-grapevine, and ai-grapevine-alerts plus related project channels (proj-grapevine-integration, customer-notes-grapevine, grapevine-hn-launch-2025) and ai-eng-prod indicates he\u2019s engineering on the Grapevine AI initiative. Slack profile says \u201cExperimenting with AI,\u201d aligning with an AI research/engineering role. No ext-* collaboration channels suggest he is internal.",
+    "is_external": false
+  },
+  {
+    "name": "Alex Budure",
+    "title": "Software Engineer, AI",
+    "project": "Grapevine (AI)",
+    "reason": "Recent activity is concentrated in proj-ai-protos and ai-grapevine-* (internal and alerts), with ongoing participation in engineering pods (pod-presence, pod-meetings) and bug/incident channels\u2014consistent with an engineering role working on the AI Grapevine initiative.",
+    "is_external": false
+  },
+  {
+    "name": "Jared Allard",
+    "title": "Software Engineer, Engineering Productivity",
+    "project": "Engineering Productivity \u2014 Desktop App v2",
+    "reason": "Slack profile lists \u201csw eng, eng prod\u201d. Their top channels are team-eng-productivity/team-eng-prod-internal, with recent heavy activity in proj-desktop-certificate-upgrade and ongoing participation in proj-desktop-v2, indicating ownership of the desktop certificate upgrade in the Desktop v2 pipeline.",
+    "is_external": false
+  },
+  {
+    "name": "rick",
+    "title": "Software Engineer, Platform",
+    "project": "Grapevine (AI)",
+    "reason": "Heavy recent activity in ai-grapevine-internal and ai-grapevine-alerts plus sustained engagement in team-platform-internal, bug-report channels, and multiple production incident channels indicates a Platform engineer working on the AI Grapevine initiative and platform reliability for v2.",
+    "is_external": false
+  },
+  {
+    "name": "Phillip Wang",
+    "title": "CEO & Co\u2011Founder",
+    "project": "Grapevine (AI)",
+    "reason": "Public info lists him as CEO & Co\u2011Founder. His recent Slack activity is concentrated in ai\u2011grapevine* and proj\u2011grapevine* channels (e.g., ai-grapevine-internal, grapevine-hn-launch-2025, proj-grapevine-landing-page-and-design, proj-grapevine-integration), matching the company\u2019s proj- and product family naming patterns, indicating he\u2019s leading/overseeing the Grapevine AI initiative.",
+    "is_external": false
+  },
+  {
+    "name": "Kumail Jaffer",
+    "title": "CTO & Co\u2011Founder",
+    "project": "Grapevine (AI)",
+    "reason": "Public info lists him as CTO & Co\u2011Founder, and his recent Slack activity is concentrated in ai\u2011grapevine\u2011* channels (internal, alerts, customer notes, HN launch) plus related integration and tenant setup, indicating he\u2019s leading/overseeing the Grapevine initiative.",
+    "is_external": false
+  },
+  {
+    "name": "Daud Alzayer",
+    "title": "Product Designer",
+    "project": "Maps & Studio Tools",
+    "reason": "Slack title is Cartographer. All\u2011time activity centers on art-maps, team-virtual-world, proj-gather-studio-and-build-tool, proj-maps-system, and proj-universal-floor-plans (proj- = project). Recent activity in team-virtual-world, team-core-app-2-0, releases-2-0, proj-v2-production indicates current work on the V2 Virtual World maps/Studio tooling.",
+    "is_external": false
+  },
+  {
+    "name": "Karen Ying",
+    "title": "Software Engineer",
+    "project": "Grapevine (AI)",
+    "reason": "Recent top activity is in proj-grapevine-integration, ai-grapevine, and ai-grapevine-internal; also active in bug-reports/performance-v2, alerts, and incident channels. Slack profile lists Software Engineer and tenure since 2021 confirms internal employee.",
+    "is_external": false
+  },
+  {
+    "name": "Josh Conley",
+    "title": "Software Engineer, Core App",
+    "project": "Grapevine (AI)",
+    "reason": "Slack profile lists Core App engineer; heavy history in team-core-app/team-core-app-2-0 and bug-report channels. Recent top activity is in proj-ai-protos, ai-grapevine, and proj-grapevine-integration plus AI eng prod and incident channels, indicating current focus on integrating the Grapevine AI initiative into the core product.",
+    "is_external": false
+  },
+  {
+    "name": "Gianluca Esposito",
+    "title": "Software Engineer, Platform",
+    "project": "Internationalization (Core App v2)",
+    "reason": "Recent activity centers on team-platform(-internal) and incidents/alerts, with focused participation in proj-i18n and historical depth in proj-localization-qa; also some involvement in desktop v2, indicating a platform engineer driving i18n on v2.",
+    "is_external": false
+  },
+  {
+    "name": "Evangeline Cheng",
+    "title": "Software Engineer, Core App",
+    "project": "Core App v2",
+    "reason": "Heavy activity in engineering channels and incidents (team-virtual-world, team-game-engine, bug-reports-2-0, alerts-engineering) shows an engineering role. Recently most messages are in proj-exponent, proj-ai-protos, ai-grapevine-internal, and proj-grapevine-integration, with additional work in pod-payments and pod-onboarding, indicating current focus on Project Exponent and Grapevine AI integration within Core App 2.0.",
+    "is_external": false
+  },
+  {
+    "name": "Quan Li",
+    "title": "Software Engineer, Video/AV",
+    "project": "Video/AV Platform",
+    "reason": "Profile lists 'Software Engineer (video)'; heavy activity in team-av and AV/video incident and bug-report channels (bug-reports-video-2-0, gather-gathervideo-user-feedback, gather-livekit-user-feedback) and recent AV-related incidents, indicating work on the Video 2.0 AV stack.",
+    "is_external": false
+  },
+  {
+    "name": "Jinen Kamdar",
+    "title": "Chief Product Officer",
+    "project": "Grapevine (AI)",
+    "reason": "Slack activity centers on product/AI and integration projects (proj-ai-protos, ai-grapevine, proj-grapevine-integration, ai-eng-prod) alongside product triage channels (bug-reports-*-2-0, customer-notes) and cross-functional pods (pod-payments, pod-meetings), consistent with a CPO leading current AI initiatives.",
+    "is_external": false
+  },
+  {
+    "name": "Jordan Maduro",
+    "title": "Software Engineer, Video/AV",
+    "project": "Video/AV \u2014 Meeting Recording",
+    "reason": "Heavy activity in team-av, av-alerts, bug-reports-video-2-0, gather-gathervideo-user-feedback, and incident channels about audio glitches. Recent and substantial participation in proj-meeting-recording (and historically proj-screen-annotation) indicates focus on the video/AV pipeline and meeting recording features.",
+    "is_external": false
+  },
+  {
+    "name": "Andy Lui",
+    "title": "Software Engineer, Chat",
+    "project": "Chat (Core App v2)",
+    "reason": "Heavy participation in engineering/core app channels (team-core-app-2-0, bug-reports-internal-2-0, incidents) and Gather Chat project/alert channels (proj-gather-chat, gather-chat-high-priority-alerts, gather-chat-critical-priority-alerts). Recent activity in proj-ai-protos suggests AI feature exploration, but primary work centers on Gather Chat v2.",
+    "is_external": false
+  },
+  {
+    "name": "Steven Yau",
+    "title": "Software Engineer, Core App",
+    "project": "Payments (Billing & Subscriptions)",
+    "reason": "Recent top activity is in pod-payments along with core app v2 alerts/incidents and bug\u2011report channels; historical participation centers on core app/virtual-world/rendering and performance channels, indicating an engineering role now focused on Payments within Core App v2.",
+    "is_external": false
+  },
+  {
+    "name": "Aaron Cohen",
+    "title": "Senior Engineering Manager, Video & Infrastructure",
+    "project": "Video/AV Platform",
+    "reason": "Slack profile lists Video & Infra; heavy activity in team-av and team-infra plus AV-focused channels (bug-reports-video-2-0, av-complaints) and incidents (audio glitches, Krisp, AssemblyAI/Deepgram). Participation in proj-meeting-recording (high all\u2011time) indicates ownership of the Meeting Recording project within the AV/video infrastructure area.",
+    "is_external": false
+  },
+  {
+    "name": "Christine Valenzuela",
+    "title": "Technical Recruiter",
+    "project": "Engineering Recruiting",
+    "reason": "Slack title is Technical Recruiter; active in eng-interviewers, eng-onboarding, and team-eng-prod-internal, with appearances in team-core-app-2-0 and proj-minimal-mode, indicating focus on engineering hiring (especially Core App 2.0/product teams). Participation in internal channels implies she is an employee.",
+    "is_external": false
+  },
+  {
+    "name": "Aki Tran",
+    "title": "Customer Support Specialist",
+    "project": "Payments (Billing & Subscriptions)",
+    "reason": "Heavy activity in team-cx-support, pod-payments, and alerts-paid-invoices; frequent participation in customer bug/notes channels and incidents about free trials and renewals, plus collaboration with sales-and-success indicates a CX support role focused on payments/billing.",
+    "is_external": false
+  },
+  {
+    "name": "Aleks Bahdanovich",
+    "title": "Product Designer",
+    "project": "Grapevine (AI)",
+    "reason": "Slack title is \u201cdesign.\u201d Recent activity centers on proj-grapevine-integration, proj-grapevine-landing-page-and-design, and ai-grapevine, plus design channels (design-requests, low-fidelity). All\u2011time history shows deep participation in design/product project channels, indicating an internal product design role focused on the Grapevine initiative; involvement in trueform-gather suggests external collaboration, not that he\u2019s external.",
+    "is_external": false
+  },
+  {
+    "name": "Karen Duran",
+    "title": "Customer Support Specialist",
+    "project": "Core App v2 & Video/AV Support",
+    "reason": "Top activity is in bug-reports-* (2-0, video) and customer-notes-* channels plus team-cx-support and incidents, with frequent collaboration in team-core-app and team-av\u2014consistent with a CX support/triage liaison for the Gather 2.0 initiative.",
+    "is_external": false
+  },
+  {
+    "name": "Brad Cerasani",
+    "title": "Design Engineer",
+    "project": "Design System (Core App v2)",
+    "reason": "Slack profile lists Design Engineer. Heavy activity in proj-design-system (202 all\u2011time msgs), plus design/eng channels like low-fidelity, eng-discuss, team-eng-productivity, and many 2-0 bug/incident channels indicates design-engineering work on the 2.0 Design System. Participation in trueform-gather suggests vendor design collaboration but as an internal employee.",
+    "is_external": false
+  },
+  {
+    "name": "Brent Traut",
+    "title": "Software Engineer, Chat",
+    "project": "Grapevine (AI)",
+    "reason": "Slack title shows 'eng \u203a chat'. Recent channels are dominated by proj-grapevine-integration and ai-grapevine* along with team-chat(-internal) and ai-eng-prod, indicating a Chat engineer working on the AI Grapevine integration.",
+    "is_external": false
+  },
+  {
+    "name": "giorgi",
+    "title": "Software Engineer, Client (Virtual World)",
+    "project": "Virtual World (Core App v2)",
+    "reason": "Heavy participation in proj-phaser-prototypes, team-virtual-world, performance-v2-internal, team-game-engine, and incidents about avatar rendering indicates a client/game engine focus on Virtual World (v2) performance and stability.",
+    "is_external": false
+  },
+  {
+    "name": "Teresa Araujo",
+    "title": "Product Manager, Payments",
+    "project": "Payments (Billing & Subscriptions)",
+    "reason": "Teresa\u2019s top activity is in pod-payments and related revenue channels (bug-reports-customer-2-0, customer-notes-2-0, sales-and-success), plus involvement in an incident about renewal links and alerts around new subscriptions/contact-sales. She also shows product-facing involvement in proj-sso, indicating ownership of enterprise payment/auth flows. The mix of pod/project channels and cross\u2011functional GTM/customer feedback streams aligns with a PM for Payments/Billing rather than engineering or CX.",
+    "is_external": false
+  },
+  {
+    "name": "David Rios",
+    "title": "Software Engineer, Payments",
+    "project": "Payments (Billing & Subscriptions)",
+    "reason": "Heavy activity in pod-payments, incidents about subscriptions/renewals (e.g., 404s when fetching subscriptions), and engineering alert/bug-report channels (alerts-core-app-v2, bug-reports-2-0, team-core-app-2-0) indicate an internal engineer working on Payments for the Core App 2.0.",
+    "is_external": false
+  },
+  {
+    "name": "austin",
+    "title": "Software Engineer, Payments",
+    "project": "Payments (Billing & Subscriptions)",
+    "reason": "Recent and all\u2011time activity is dominated by pod-payments, alerts-new-subscriptions, and incident channels about free trials/subscriptions; also active in infra/eng channels. Slack title \u201cDebt Collector\u201d aligns humorously with payments work. No ext-* channels indicate internal employee.",
+    "is_external": false
+  },
+  {
+    "name": "ryan kauk",
+    "title": "Software Engineer, Payments",
+    "project": "Payments (Billing & Subscriptions)",
+    "reason": "Dominant activity in pod-payments and related incident channels (renewals, subscriptions, 404s fetching subscriptions) plus participation in engineering/alerts and bug-report channels indicates an engineering role focused on the Payments area. Historical participation in other product pods (onboarding, presence, status) suggests a product engineer, but recent work is clearly centered on Payments.",
+    "is_external": false
+  },
+  {
+    "name": "Ben Greenier",
+    "title": "Software Engineer, Video/AV",
+    "project": "Video/AV \u2014 Meeting Recording",
+    "reason": "Slack activity centers on AV reliability and incidents (team-av, av-alerts, uptime, bug-reports-video-2-0) with heavy participation in proj-meeting-recording, indicating ownership/work on the Meeting Recording effort within AV.",
+    "is_external": false
+  },
+  {
+    "name": "Chandler Roth",
+    "title": "Software Engineer, AI",
+    "project": "Grapevine (AI)",
+    "reason": "Heavy activity in ai-grapevine-internal and ai-grapevine-alerts indicates engineering ownership of the Grapevine AI product; participation in ai-eng-prod, test-grapevine-ingest, new-grapevine-tenant, and customer-notes-grapevine points to backend/production work and tenant setup; involvement in gradientmsp-grapevine-onboarding and grapevine-hn-launch-2025 shows product rollout/customer onboarding support. Channels and patterns align with an internal AI engineering role on Grapevine.",
+    "is_external": false
+  }
+]

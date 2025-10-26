@@ -1,0 +1,237 @@
+[
+  {
+    "name": "Victor Zhou",
+    "manager": "Kumail Jaffer",
+    "reason": "Victor is acting as an engineering manager (rick and Jordan Maduro explicitly report to him). Platform engineers (e.g., Gianluca Esposito) explicitly report to the CTO, and Grapevine is CTO\u2011led. Title/discipline alignment and strong communication with Kumail make the CTO, Kumail Jaffer, the most likely manager."
+  },
+  {
+    "name": "Daniel Kim",
+    "manager": "Jinen Kamdar",
+    "reason": "No explicit signal for Daniel. He is a Product Designer on Grapevine AI; other Grapevine designers (Som Chakrabarti, Aleks Bahdanovich) explicitly report to CPO Jinen Kamdar. Jinen mentions Daniel frequently (31 times), and title/project alignment indicates Design rolls up to Jinen."
+  },
+  {
+    "name": "Panagiotis Atmatzidis",
+    "manager": "Aaron Cohen",
+    "reason": "Panagiotis is an SRE focused on incidents/infra monitoring, aligning with the Infra team. Explicit manager signals show Infra engineers (e.g., Achilleas Triantafyllou, Quan Li, Ben Greenier, Jared Allard, David Orr) report to Aaron Cohen (Sr Eng Manager, Video & Infra). Panagiotis also mentions Aaron and collaborates heavily with Achilleas, indicating he likely reports into Aaron\u2019s org."
+  },
+  {
+    "name": "Ashley Kalley",
+    "manager": "Clint",
+    "reason": "Ashley manages Aki Tran (explicit signal), indicating she is a CX lead. Clint is the Customer Success Manager with explicit reports from customer-facing roles (e.g., Teresa Araujo, Morgan Smith), aligning him as the manager over CX/Success. Ashley\u2019s discipline (CX Support, Payments pod) matches Clint\u2019s org, and mention patterns (Ashley mentions Clint more than vice versa) further support this reporting line."
+  },
+  {
+    "name": "Clint",
+    "manager": "Jinen Kamdar",
+    "reason": "Clint appears to be the GTM/RevOps lead for Payments/Grapevine onboarding and already manages Morgan Smith and PM Teresa Araujo. The most appropriate senior leader to roll up to is the CPO (Jinen) who oversees product/GTM initiatives, breaking the cycle cleanly."
+  },
+  {
+    "name": "Emily Hu",
+    "manager": "Evangeline Cheng",
+    "reason": "Explicit manager signal states Emily Hu reports to Evangeline Cheng (2025-08-05); mention patterns and engineering focus further support this."
+  },
+  {
+    "name": "David Orr",
+    "manager": "Aaron Cohen",
+    "reason": "Explicit manager signal indicates David Orr reports to Aaron Cohen (2025-09-24). Titles and project alignment (AV/Meeting Recording) corroborate."
+  },
+  {
+    "name": "Achilleas Triantafyllou",
+    "manager": "Aaron Cohen",
+    "reason": "Explicit manager signal in Slack: 'Achilleas Triantafyllou reports to Aaron Cohen' (2025-04-16)"
+  },
+  {
+    "name": "Katrina Lopez",
+    "manager": "Phillip Wang",
+    "reason": "No explicit manager signal for Katrina, but she manages the Technical Recruiter (Christine Valenzuela), confirming she\u2019s a People Ops manager. With no Head/VP of People listed, People Operations typically reports to the CEO in startups. Cross\u2011functional exec mentions support close coordination with leadership; thus Phillip Wang is the most likely manager."
+  },
+  {
+    "name": "Morgan Smith",
+    "manager": "Clint",
+    "reason": "Explicit manager signal states Morgan Smith reports to Clint (Customer Success Manager) on 2024-11-12, which is the most reliable indicator."
+  },
+  {
+    "name": "Sam Smith",
+    "manager": "Jinen Kamdar",
+    "reason": "Explicit manager signal (Slack) states Sam Smith reports to Jinen Kamdar (2025-08-21)."
+  },
+  {
+    "name": "Autumn Moody",
+    "manager": "Clint",
+    "reason": "No explicit manager signal for Autumn. Role and project align with GTM: Growth Marketing Manager working on website and payments funnel overlaps with Morgan Smith (Customer Comms & Education) and Teresa Araujo (Payments PM), both of whom explicitly report to Clint\u2014indicating Clint manages GTM functions. Mentions show Clint references Autumn and Morgan collaborates heavily with Autumn, consistent with being on Clint\u2019s team."
+  },
+  {
+    "name": "Carina",
+    "manager": "Ashley Kalley",
+    "reason": "Ashley is an established CX support lead (explicit signal: Aki Tran reports to Ashley). Carina\u2019s title and channel activity match Ashley\u2019s CX support domain, and Ashley mentions Carina multiple times, indicating a direct management relationship. Clint appears higher-level CX/Success, but Ashley is the most likely direct manager."
+  },
+  {
+    "name": "Bryan Phelps",
+    "manager": "Victor Zhou",
+    "reason": "Bryan is a Platform engineer on the Grapevine integration; explicit manager signals show multiple engineers (rick, Jordan Maduro) reporting to Victor Zhou, indicating Victor is the Platform/AI team manager. Bryan\u2019s project alignment matches Victor\u2019s, and their mentions are relatively high and mutual, reinforcing this relationship."
+  },
+  {
+    "name": "Som Chakrabarti",
+    "manager": "Jinen Kamdar",
+    "reason": "Explicit manager signal from Slack on 2025-10-02 states Som reports to Jinen Kamdar"
+  },
+  {
+    "name": "Evan Bakst",
+    "manager": "Clint",
+    "reason": "RevOps aligns under GTM/Success leadership. Evan\u2019s work (Payments/enterprise onboarding) fits under Clint\u2019s cross\u2011functional programs, and their strong collaboration signals support Clint as Evan\u2019s manager."
+  },
+  {
+    "name": "Zachary Montoya",
+    "manager": "Jinen Kamdar",
+    "reason": "No explicit signal for Zachary. As a Product Designer, he likely reports within Product Design; multiple designers (Som Chakrabarti, Aleks Bahdanovich) explicitly report to CPO Jinen Kamdar, indicating Jinen manages Product Design. Mention patterns show collaboration with Som but not a manager-report dynamic. Therefore, Jinen is the most likely manager."
+  },
+  {
+    "name": "Johnny Dallas",
+    "manager": "Phillip Wang",
+    "reason": "Explicit manager signal states Johnny Dallas reports to Phillip Wang (2025-09-17)."
+  },
+  {
+    "name": "Alex Budure",
+    "manager": "Evangeline Cheng",
+    "reason": "Explicit manager signal: Alex Budure reports to Evangeline Cheng (2025-10-03). Multiple engineers also report to Evangeline, reinforcing her managerial role for AI Grapevine/Core App integration."
+  },
+  {
+    "name": "Jared Allard",
+    "manager": "Aaron Cohen",
+    "reason": "Explicit manager signal: Jared Allard reports to Aaron Cohen (2025-10-01 19:31:38)"
+  },
+  {
+    "name": "rick",
+    "manager": "Victor Zhou",
+    "reason": "Explicit manager signal: rick reports to Victor Zhou (2025-10-03)"
+  },
+  {
+    "name": "Phillip Wang",
+    "manager": null,
+    "reason": "CEO & Co\u2011Founder; explicit signals show C\u2011level leaders (CTO, CPO) report to him, indicating he has no manager."
+  },
+  {
+    "name": "Kumail Jaffer",
+    "manager": "Phillip Wang",
+    "reason": "Explicit manager signal from Slack (2025-03-05) states Kumail Jaffer reports to Phillip Wang (CEO)."
+  },
+  {
+    "name": "Daud Alzayer",
+    "manager": "Jinen Kamdar",
+    "reason": "No explicit manager signal for Daud. His Cartographer role (art/maps, Studio tooling) aligns with Product/Design rather than Engineering. Multiple designers and product roles (Som, Aleks, Sam) explicitly report to CPO Jinen Kamdar, indicating Design rolls up to him. Jinen also mentions Daud frequently, reinforcing a direct relationship. Cross\u2011discipline reporting to an engineering manager (e.g., Evangeline) is unlikely."
+  },
+  {
+    "name": "Karen Ying",
+    "manager": "Evangeline Cheng",
+    "reason": "No explicit signal for Karen. Her role (Software Engineer) and focus on Grapevine integration match Evangeline Cheng\u2019s team, and multiple Grapevine/Core App engineers (e.g., Alex Budure, Emily Hu, David Rios, giorgi, ryan kauk) explicitly report to Evangeline. Evangeline\u2019s own activity centers on proj-grapevine-integration and proj-ai-protos, aligning with Karen\u2019s channels; mention patterns are consistent with a manager\u2013IC relationship."
+  },
+  {
+    "name": "Josh Conley",
+    "manager": "Evangeline Cheng",
+    "reason": "No explicit manager signal for Josh. His Core App role and Grapevine integration focus align with the group managed by Evangeline; multiple engineers in the same area explicitly report to her (e.g., Emily Hu, David Rios, ryan kauk, giorgi, Alex Budure). High mutual mentions between Josh and Evangeline further support this."
+  },
+  {
+    "name": "Gianluca Esposito",
+    "manager": "Kumail Jaffer",
+    "reason": "Explicit manager signal dated 2024-12-18 indicates Gianluca Esposito reports to Kumail Jaffer (highest confidence)."
+  },
+  {
+    "name": "Evangeline Cheng",
+    "manager": "Kumail Jaffer",
+    "reason": "No explicit manager signal for Evangeline, but multiple engineers explicitly report to her (Alex Budure, David Rios, Emily Hu, giorgi, ryan kauk), indicating she is an engineering manager for Core App/Virtual World. Engineering managers in this org typically report to the CTO; Aaron Cohen (Sr Eng Manager) also reports to Kumail Jaffer. Given role/discipline alignment and leadership structure, the most likely manager is CTO Kumail Jaffer."
+  },
+  {
+    "name": "Quan Li",
+    "manager": "Aaron Cohen",
+    "reason": "Explicit manager signal states Quan Li reports to Aaron Cohen (2024-12-18). Roles align (Quan: Software Engineer, Video/AV; Aaron: Sr Eng Manager, Video & Infra), and AV-focused activity supports this reporting line."
+  },
+  {
+    "name": "Jinen Kamdar",
+    "manager": "Phillip Wang",
+    "reason": "Explicit manager signal states Jinen Kamdar reports to Phillip Wang (CEO) as of 2025-07-23; aligns with CPO reporting to CEO."
+  },
+  {
+    "name": "Jordan Maduro",
+    "manager": "Victor Zhou",
+    "reason": "Explicit manager signal (2025-10-03) states Jordan Maduro reports to Victor Zhou; mention patterns (Victor\u2192Jordan 5x vs Jordan\u2192Victor 1x) also support this."
+  },
+  {
+    "name": "Andy Lui",
+    "manager": "Evangeline Cheng",
+    "reason": "Andy is a Software Engineer working on Core App v2 (Gather Chat). Explicit manager signals show multiple Core App engineers (Emily Hu, David Rios, Alex Budure, giorgi, ryan kauk) report to Evangeline Cheng, indicating she manages the Core App engineering group that Andy fits into."
+  },
+  {
+    "name": "Steven Yau",
+    "manager": "Evangeline Cheng",
+    "reason": "Steven is a Core App v2 engineer in the Payments pod. Explicit signals show multiple Payments/Core App engineers (David Rios, ryan kauk, Emily Hu, Alex Budure, giorgi) report to Evangeline Cheng, indicating she manages this group. Mention patterns between Steven and Evangeline are consistent with a manager-report relationship."
+  },
+  {
+    "name": "Aaron Cohen",
+    "manager": "Kumail Jaffer",
+    "reason": "Explicit manager signal dated 2025-10-03 states Aaron Cohen reports to Kumail Jaffer; aligns with Sr Eng Manager reporting into CTO org."
+  },
+  {
+    "name": "Christine Valenzuela",
+    "manager": "Katrina Lopez",
+    "reason": "Explicit manager signal indicates Christine reports to Katrina Lopez (2025-10-02)."
+  },
+  {
+    "name": "Aki Tran",
+    "manager": "Ashley Kalley",
+    "reason": "Explicit manager signal indicates Aki Tran reports to Ashley Kalley; roles and pod (CX Payments) also align."
+  },
+  {
+    "name": "Aleks Bahdanovich",
+    "manager": "Jinen Kamdar",
+    "reason": "Explicit manager signal (2025-09-15) stating Aleks reports to Jinen Kamdar; consistent with CPO oversight of Grapevine design and strong cross-mentions in Slack."
+  },
+  {
+    "name": "Karen Duran",
+    "manager": "Ashley Kalley",
+    "reason": "No explicit manager signal for Karen. However, another CX Support Specialist (Aki Tran) explicitly reports to Ashley Kalley, indicating Ashley manages the CX Support team. Karen\u2019s CX support/triage role aligns with Ashley\u2019s domain, and Ashley frequently mentions Karen, reinforcing this reporting line."
+  },
+  {
+    "name": "Brad Cerasani",
+    "manager": "Jinen Kamdar",
+    "reason": "No explicit signal for Brad. His Design Engineer role on the 2.0 Design System fits the Product/Design org under the CPO. Strong mention asymmetry (Jinen\u2192Brad: 17, Brad\u2192Jinen: 0) suggests manager\u2192report. Jinen explicitly manages other designers (Som, Aleks), reinforcing this reporting line."
+  },
+  {
+    "name": "Brent Traut",
+    "manager": "Evangeline Cheng",
+    "reason": "No explicit signal for Brent. His role (Software Engineer, Chat) and Grapevine integration work align with Core App ownership, where Evangeline appears to be the acting eng manager (multiple engineers explicitly report to her and she leads Grapevine integration). Strong collaboration and asymmetric mentions (Evangeline\u2192Brent 19 vs Brent\u2192Evangeline 1) further support this."
+  },
+  {
+    "name": "giorgi",
+    "manager": "Evangeline Cheng",
+    "reason": "Explicit manager signal: 'giorgi reports to Evangeline Cheng' (2025-06-30)"
+  },
+  {
+    "name": "Teresa Araujo",
+    "manager": "Clint",
+    "reason": "Explicit manager signal from Slack (2025-07-28) stating Teresa reports to Clint; frequent mutual mentions and shared Payments pod work further support this relationship."
+  },
+  {
+    "name": "David Rios",
+    "manager": "Evangeline Cheng",
+    "reason": "Explicit manager signal from Slack (2025-09-22) indicating David reports to Evangeline Cheng"
+  },
+  {
+    "name": "austin",
+    "manager": "Evangeline Cheng",
+    "reason": "No explicit manager signal for Austin. He\u2019s a Software Engineer in the Payments pod; multiple Payments engineers (David Rios and ryan kauk) explicitly report to Evangeline Cheng, indicating she manages that group. Austin also has frequent two\u2011way mentions with Evangeline, consistent with a manager-report relationship."
+  },
+  {
+    "name": "ryan kauk",
+    "manager": "Evangeline Cheng",
+    "reason": "Explicit manager signal from Slack (2025-09-15 16:20:49)."
+  },
+  {
+    "name": "Ben Greenier",
+    "manager": "Aaron Cohen",
+    "reason": "Explicit manager signal in Slack on 2025-10-02 stating Ben reports to Aaron; roles and AV/Meeting Recording work align and mentions support this."
+  },
+  {
+    "name": "Chandler Roth",
+    "manager": "Johnny Dallas",
+    "reason": "Explicit manager signal: Chandler Roth reports to Johnny Dallas (2025-09-08)."
+  }
+]
