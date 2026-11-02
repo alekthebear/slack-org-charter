@@ -2,6 +2,8 @@
 
 This project generates organizational charts from Slack workspace data by analyzing user interactions, channel memberships, and other features to infer organizational structure.
 
+For the approach, design decisions, results, and failure analysis, see the [project write-up](docs/notes.md).
+
 ## Table of Contents
 - [Environment Setup](#environment-setup)
 - [Configuration](#configuration)
@@ -29,7 +31,7 @@ pip install uv
 
 ```bash
 # Navigate to project directory
-cd /path/to/gather
+cd /path/to/slack-org-charter
 
 # Create virtual environment and install dependencies
 uv sync
